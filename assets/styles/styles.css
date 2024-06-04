@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    height: 100vh;
+    background-color: #333;
+}
+
+.container-main ul {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1rem;
+    color: #ca0aaa;
+}
+
+@keyframes example {
+    0%   {background-color: #f0e3e3;}
+    50%  {background-color: #ca0aaa;}
+    100% {background-color: #4b2b45;}
+}
+
+.container-main ul li {
+    list-style: none;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: #f0e3e3;
+    border-radius: 0.5rem;
+    width: 20rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.container-main ul li:hover {
+    background-color: #4b2b45;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.container-header {
+    color: #f0e3e3;
+    height: 5rem;
+    background-color: #ca0aaa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.container-header ul {
+    list-style: none;
+    display: flex;
+}
+
+.container-header ul li {
+    margin-right: 2rem;
+}
+
+.container-header ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.container-header ul li a:hover {
+    color: #f0e3e3;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+}
