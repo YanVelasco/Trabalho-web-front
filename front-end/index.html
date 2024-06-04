@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles/styles.css">
+    <script src="JS/main.js"></script>
+    <title>Trabalho</title>
+</head>
+<body>
+    <header>
+        <nav class="container-header">
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="sobre.php">Sobre</a></li>
+                <li><a href="contato.php">Contato</a></li>
+                <li><a href="login.php">Login</a></li>
+                <li><a href="cadastrar.php">Cadastrar</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="container-main">
+            <input type="text" id="searchInput" placeholder="Pesquisar..." onkeyup="filterCourses()">
+            <ul id="courseList">
+                <p id="backend-await">Waiting for Backend... please run docker-compose up on backend folder!</p>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
