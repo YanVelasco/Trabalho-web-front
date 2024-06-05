@@ -8,14 +8,19 @@
 - Paulo Henrique Soares Ferreira (D23816)
 - Yan Carlos Duarte Velasco (D23739)
 
-# Como Executar
+# Executando em modo local (no back-end)
 
-Modo debug:
+Abra o arquivo index.html presente nesta pasta.
+
+# Executando em modo backend
+Execute o seguinte comando:
 ```
 docker-compose up
 ```
 
-# Como parar
+Depois acesse http://localhost 
+
+# Como parar modo backend
 ```
 docker-compose down
 ```
