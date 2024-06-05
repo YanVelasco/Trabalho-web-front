@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    color: #fff;
+    color: #f0f0f0;
     height: 100vh;
     background-color: #333;
 }
@@ -17,20 +17,70 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     padding: 1rem;
-    color: #ca0aaa;
+    color: #f0f0f0;
 }
 
-@keyframes example {
-    0%   {background-color: #f0e3e3;}
-    50%  {background-color: #ca0aaa;}
-    100% {background-color: #4b2b45;}
+@keyframes scale-up {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes scale-down {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.modal.fade-out {
+    animation: fade-out 0.5s forwards;
+}
+
+.container-main ul li {
+    /* other styles */
+    animation: scale-up 0.3s ease-in-out;
+}
+
+.modal.show {
+    /* other styles */
+    animation: fade-in 0.5s ease-in-out;
 }
 
 .container-main ul li {
     list-style: none;
     margin: 1rem;
     padding: 1rem;
-    background-color: #f0e3e3;
+    background-color: #555;
     border-radius: 0.5rem;
     width: 20rem;
     text-align: center;
@@ -38,19 +88,86 @@ body {
 }
 
 .container-main ul li:hover {
-    background-color: #4b2b45;
-    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+    background-color: #777;
+    box-shadow: 0px 0px 10px 3px rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+.modal {
+    color: #29485e;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+.close-button {
+    color: crimson;
+    font-size: 28px;
+    font-weight: bold;
     cursor: pointer;
 }
 
 .container-header {
-    color: #f0e3e3;
+    color: #f0f0f0;
     height: 5rem;
-    background-color: #ca0aaa;
+    background-color: #555;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
+}
+
+.subscribe-button {
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-button:hover {
+    background-color: #ddd;
+}
+
+.subscribed-checkmark {
+    cursor: pointer;
+    color: #29485e;
+    font-size: 2rem;
+    display: block;
+    margin-top: 1rem;
 }
 
 .container-header ul {
@@ -64,20 +181,22 @@ body {
 
 .container-header ul li a {
     text-decoration: none;
-    color: #fff;
+    color: #f0f0f0;
     font-size: 1.2rem;
     transition: color 0.3s ease;
 }
 
 .container-header ul li a:hover {
-    color: #f0e3e3;
+    color: #ddd;
 }
 
 #searchInput {
     width: 100%;
     padding: 0.5rem;
     margin-bottom: 1rem;
-    border: none;
+    border: 1px solid #f0f0f0;
     border-radius: 0.25rem;
     font-size: 1rem;
+    background-color: #555;
+    color: #f0f0f0;
 }

@@ -4,28 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/styles/styles.css">
-    <script src="js/main.js"></script>
+    <script defer src="js/main.js"></script>
     <title>Trabalho</title>
 </head>
 <body>
-    <header>
-        <nav class="container-header">
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="sobre.php">Sobre</a></li>
-                <li><a href="contato.php">Contato</a></li>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="cadastrar.php">Cadastrar</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="container-main">
-            <input type="text" id="searchInput" placeholder="Pesquisar..." onkeyup="filterCourses()">
-            <ul id="courseList">
-                <p id="backend-await">Waiting for Backend... please run docker-compose up on backend folder!</p>
-            </ul>
-        </section>
-    </main>
+<header>
+    <nav class="container-header">
+        <ul>
+            <li><a href="#">Home</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div id="courseModal" class="modal">
+        <div id="courseModalContent" class="modal-content">
+            <h2 id="courseModalTitle"></h2>
+            <p id="courseModalDescription"></p>
+            <button id="courseModalSubscribe" class="subscribe-button">Inscrever-se</button>
+            <span id="courseModalSubscribed" class="subscribed-checkmark" style="display: none;">✓</span>
+            <button id="courseModalClose" class="close-button">Fechar</button>
+        </div>
+    </div>
+    <section class="container-main">
+        <h2>Cursos inscritos</h2>
+        <ul id="subscribedCoursesList"></ul>
+        <p id="totalHours">Total de horas: 0</p>
+        <input type="text" id="searchInput" placeholder="Pesquisar..." onkeyup="filterCourses()">
+        <ul id="courseList">
+            <p id="backend-await">Waiting for Backend... please run docker-compose up on backend folder!</p>
+        </ul>
+    </section>
+</main>
 </body>
 </html>
