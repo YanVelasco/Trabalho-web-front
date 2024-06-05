@@ -10,6 +10,12 @@
 
 # Como Executar
 
-Siga as instruções para executar o serviço de backend.
+Modo debug:
+```
+docker-compose up
+```
 
-Depois abra o arquivo frontend/index.html no browser de preferência.
+# Como parar
+```
+docker-compose down
+```

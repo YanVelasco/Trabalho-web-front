@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    build: ./back-end/Db/
+  app:
+    build:
+      context: ./back-end/
+      dockerfile: ./Aspnetcoreapp/Dockerfile
+    ports:
+      - 8080:80
+    depends_on:
+      - db
+  nginx:
+    image: nginx
+    volumes:
+      - ./front-end/:/usr/share/nginx/html
+    ports:
+      - 80:80

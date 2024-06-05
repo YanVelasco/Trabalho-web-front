@@ -1,15 +1,16 @@
 # We choose exact tag (not 'latest'), to be sure that new version won't break creating image
-FROM mcr.microsoft.com/mssql/server:2017-CU17-ubuntu
+FROM mcr.microsoft.com/mssql/server:2022-latest
 
 # Create app directory
-RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Copy initialization scripts
 COPY . /usr/src/app
 
 # Grant permissions for the run-initialization script to be executable
-RUN chmod +x /usr/src/app/run-initialization.sh
+COPY --chmod=755 run-initialization.sh /usr/src/app/run-initialization.sh
+COPY --chmod=755 create-database.sql /usr/src/app/create-database.sql
+COPY --chmod=755 entrypoint.sh /usr/src/app/entrypoint.sh
 
 # Set environment variables, not to have to write them with docker run command
 # Note: make sure that your password matches what is in the run-initialization script 

@@ -25,8 +25,7 @@ namespace aspnetcoreapp
                     policy
                  .AllowAnyOrigin() 
                  .AllowAnyMethod()
-                 .AllowAnyHeader()
-                 .AllowCredentials();
+                 .AllowAnyHeader();
                 });
             });
         }

@@ -8,4 +8,7 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
 WORKDIR /app
 COPY --from=build-env /app/Aspnetcoreapp/out .
 
+# Expose port 8080 in case accesing from other container
+EXPOSE 8080
+
 ENTRYPOINT ["dotnet", "Aspnetcoreapp.dll"]
