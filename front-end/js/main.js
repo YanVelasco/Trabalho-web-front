@@ -1,5 +1,5 @@
-backendAlive = false;
-backendUrl = "http://localhost:8080/";
+let backendAlive = false;
+const backendUrl = "http://localhost:8080/";
 
 function filterCourses() {
     const input = document.getElementById('searchInput');
@@ -156,20 +156,18 @@ async function initialize() {
     } else {
         courses = data;
     }
-    console.log(courses)
     fillCourses(courses);
 }
 
 // BACKEND CODE
 async function fetchCourses() {
-    const response =  await fetch(backendUrl + "courses/list");
+    const response =  await fetch(backendUrl + "courses");
     return await response.json();
 }
 
 async function healthcheck() {
     try{
         const response =  await fetch(backendUrl + "health");
-        console.log(response.ok)
         if (response.ok) {
             return true;
         }

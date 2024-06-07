@@ -1,0 +1,36 @@
+.list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.course {
+    height: 2em;
+    margin: 10px;
+    text-align: center;
+    font-size: 1em;   
+}
+
+.course-id {
+    width: 5%;
+    min-width: 5em;
+}
+.course-title {
+    width: 15%;
+    min-width: 5em;
+}
+.course-description {
+    width: 55%;
+    min-width: 5em;
+}
+.course-hours {
+    width: 5%;
+    min-width: 5em;
+}
+.course-button {
+    width: 5%;
+    min-width: 5em;
+}
+.course-delete {
+    width: 5%;
+    min-width: 5em;
+}

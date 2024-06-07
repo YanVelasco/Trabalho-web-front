@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); 
+ 
+:root { 
+ 
+    /* fonts type */ 
+    --gill_sans-font: 'Gill Sans MT', sans-serif; 
+    --poppins-font: 'Poppins', sans-serif; 
+ 
+    /* fonts size */ 
+    --header-font-size: 10.0rem; 
+    --small-font-size: 4.0rem; 
+ 
+    /* colors */ 
+    --bg-color: #333333; 
+    --course-bg-color: #555555; 
+    --font-color: #F0F0F0;
+    --hover-color: #777777;
+    --modal-color: #29485e;
+    --modal-bg-color: #fefefe;
+}
