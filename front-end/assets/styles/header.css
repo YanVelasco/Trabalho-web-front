@@ -7,8 +7,10 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: #f0f0f0;
-    height: 100vh;
     background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .container-main ul {

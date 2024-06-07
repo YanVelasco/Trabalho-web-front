@@ -1,5 +1,13 @@
 * {box-sizing: border-box;}
 
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  width: 40%;
+  margin: auto auto;
+}
+
 .input-container {
   display: flex;
   width: 100%;
@@ -8,8 +16,8 @@
 
 .icon {
   padding: 10px;
-  background: dodgerblue;
-  color: white;
+  background-color: #555;
+  color: #f0f0f0;
   min-width: 50px;
   text-align: center;
 }
@@ -21,11 +29,11 @@
 }
 
 .input-field:focus {
-  border: 2px solid dodgerblue;
+  background-color: #555;
 }
 
 .btn {
-  background-color: dodgerblue;
+  background-color: #555;
   color: white;
   padding: 15px 20px;
   border: none;

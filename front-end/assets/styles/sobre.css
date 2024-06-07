@@ -1,0 +1,15 @@
+.about-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+.about-section h2 {
+    margin-bottom: 1rem;
+}
+
+.about-section p {
+    margin-bottom: 1rem;
+}
