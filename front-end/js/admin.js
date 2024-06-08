@@ -66,9 +66,29 @@ async function initialize() {
 }
 
 async function addCourse() {
-    if (!backendAlive) {
-        alert("Backend desabilitado");
+    new_title = document.getElementById("new-title");
+    new_description = document.getElementById("new-description");
+    new_hours = document.getElementById("new-hours");
+
+    if (new_title.value == "" || new_description.value == "" || new_hours.value == "" || isNaN(new_hours.value)){
+        alert("Favor preencha todos os campos com valores válidos");
         return;
+    }
+
+    if (!backendAlive) {
+        courses = JSON.parse(localStorage.getItem('courses'));
+
+        const highestId = Math.max(...courses.map(course => course.id));
+
+        course = {
+            id: highestId + 1,
+            title: new_title.value,
+            description: new_description.value,
+            hours: new_hours.value
+        }
+
+        courses.push(course);
+        localStorage.setItem('courses', JSON.stringify(courses));
     } else {
         const response = await fetch(backendUrl + "courses/", {
             method: "POST",
@@ -76,14 +96,12 @@ async function addCourse() {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                title: document.getElementById("new-title").value,
-                description: document.getElementById("new-description").value,
-                hours: document.getElementById("new-hours").value
+                title: new_title.value,
+                description: new_description.value,
+                hours: new_hours.value
             })
         });
-        if (response.ok) {        
-            initialize();
-        }
+        if (response.ok) { }
         else if (response.status === 400) {
             alert("Favor preencha todos os campos");
         }
@@ -91,6 +109,11 @@ async function addCourse() {
             alert("Erro ao adicionar curso");
         }
     }
+
+    new_title.value = "";
+    new_description.value = "";
+    new_hours.value = "";
+    initialize();
 }
 
 async function fetchList() {
@@ -107,8 +130,31 @@ async function fetchList() {
 
 async function updateCourse(course) {
     if (!backendAlive) {
-        alert("Backend desabilitado");
-        return;
+        courses = JSON.parse(localStorage.getItem('courses'));
+        course = courses.filter(c => c.id === course.id);
+        
+        if(course.length === 0) {
+            alert("Curso não encontrado");
+            return;
+        }
+
+        course = course[0];
+        title = document.getElementById(course.id + "-title").value;
+        description = document.getElementById(course.id + "-description").value;
+        hours = document.getElementById(course.id + "-hours").value;
+
+        if (title == "" || description == "" || hours == "") {
+            alert("Favor preencha todos os campos");
+            return;
+        }
+
+        course.title = title;
+        course.description = description;
+        course.hours = hours;
+
+        localStorage.setItem('courses', JSON.stringify(courses));
+
+        initialize();
     } else {
         const response = await fetch(backendUrl + "courses/", {
             method: "PUT",
@@ -135,25 +181,39 @@ async function updateCourse(course) {
 }
 
 async function deleteCourse(id) {
-    if (!backendAlive) {
-        
+    if (!confirm("Deseja realmente deletar o curso?")) {
         return;
+    }
+
+    if (!backendAlive) {
+        courses = JSON.parse(localStorage.getItem('courses'));
+        course = courses.filter(c => c.id === id);
+        
+        if(course.length === 0) {
+            alert("Curso não encontrado");
+            return;
+        }
+
+        course = course[0];
+
+        index = courses.indexOf(course);
+        courses.splice(index, 1);
+        localStorage.setItem('courses', JSON.stringify(courses));
+        initialize();
     } else {
-        if (confirm("Deseja realmente deletar o curso?")) {
-            const response = await fetch(backendUrl + "courses/" + id, {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json",
-                }
-            });
-            if (response.ok) {
-                initialize();
-            } else if (response.status === 404) {
-                alert("Curso não encontrado");
-            }        
-            else {
-                alert("Erro ao deletar curso");
+        const response = await fetch(backendUrl + "courses/" + id, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
             }
+        });
+        if (response.ok) {
+            initialize();
+        } else if (response.status === 404) {
+            alert("Curso não encontrado");
+        }        
+        else {
+            alert("Erro ao deletar curso");
         }
     }
 }
