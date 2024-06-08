@@ -8,6 +8,9 @@
 - Paulo Henrique Soares Ferreira (D23816)
 - Yan Carlos Duarte Velasco (D23739)
 
+# Visualizando página sem backend:
+Acesse https://yanvelasco.github.io/Trabalho-web-front/front-end/index.html
+
 # Executando em modo local (no back-end)
 
 Abra o arquivo index.html presente nesta pasta.

@@ -102,7 +102,6 @@ function showCourseModal(course) {
     });
 }
 
-
 function subscribeToCourse(course, courseItem) {
     // Adiciona o curso à lista de cursos inscritos
     subscribedCourses.push(course);
@@ -154,7 +153,10 @@ async function initialize() {
     if (backendAlive) {
         courses = await fetchCourses();
     } else {
-        courses = data;
+        if (!localStorage.getItem('courses')) {
+            localStorage.setItem('courses', JSON.stringify(data));
+        }  
+        courses = JSON.parse(localStorage.getItem('courses'));
     }
     fillCourses(courses);
 }
