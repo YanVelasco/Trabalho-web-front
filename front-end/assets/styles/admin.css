@@ -1,6 +1,8 @@
-.list {
+.couse-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 4px;
 }
 
 .course {
@@ -11,26 +13,32 @@
 }
 
 .course-id {
-    width: 5%;
-    min-width: 5em;
+    width: 5ch;
 }
 .course-title {
-    width: 15%;
-    min-width: 5em;
+    flex: 1 1 20ch;
 }
 .course-description {
-    width: 55%;
-    min-width: 5em;
+    flex: 5 1 50ch;
 }
 .course-hours {
-    width: 5%;
-    min-width: 5em;
+    width: 10ch;
 }
 .course-button {
-    width: 5%;
-    min-width: 5em;
+    width: 8ch;
+    color: #77ff77;
 }
 .course-delete {
-    width: 5%;
-    min-width: 5em;
+    width: 8ch;
+    color: #ff7777;
+}
+
+hr {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
+
+p {
+    width: 100%;
 }

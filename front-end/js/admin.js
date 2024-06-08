@@ -13,6 +13,7 @@ async function initialize() {
 
     courses.forEach((course) => {
         const div = document.createElement("div");
+        div.className = "couse-container";
         
         const id = document.createElement("input");
         id.className = "course course-id";
@@ -25,18 +26,21 @@ async function initialize() {
         title.className = "course course-title";
         title.type = "text";
         title.value = course.title;
+        title.placeholder = "Title"
         
         const description = document.createElement("input");
         description.id = course.id + "-description";
         description.className = "course course-description";
         description.type = "text";
         description.value = course.description;
+        description.placeholder = "Description"
         
         const hours = document.createElement("input");
         hours.id = course.id + "-hours";
         hours.className = "course course-hours";
         hours.type = "text";
         hours.value = course.hours;
+        hours.placeholder = "Hours"
         
         const button = document.createElement("button");
         button.className = "course course-button";
@@ -57,8 +61,8 @@ async function initialize() {
         div.appendChild(hours);
         div.appendChild(button);
         div.appendChild(bdelete);
-        div.appendChild(line);
         courseList.appendChild(div);
+        courseList.appendChild(line);
     });
 
     const addButton = document.getElementById("new-course");
