@@ -17,4 +17,11 @@
     --hover-color: #777777;
     --modal-color: #29485e;
     --modal-bg-color: #fefefe;
+
+    --admin-bg-color: #181a1b;
+    --admin-border-color: #736b5e;
+    --admin-delete-color: #ff7777;
+    --admin-delete-color-hover: #ff0000;
+    --admin-confirm-color: #00ff99;
+    --admin-confirm-color-hover: #00ff33;
 }

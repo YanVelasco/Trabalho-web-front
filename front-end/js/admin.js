@@ -28,7 +28,7 @@ async function initialize() {
         title.value = course.title;
         title.placeholder = "Title"
         
-        const description = document.createElement("input");
+        const description = document.createElement("textarea");
         description.id = course.id + "-description";
         description.className = "course course-description";
         description.type = "text";
@@ -65,8 +65,41 @@ async function initialize() {
         courseList.appendChild(line);
     });
 
-    const addButton = document.getElementById("new-course");
-    addButton.onclick = addCourse;
+    const div = document.createElement("div");
+    div.className = "couse-container";
+
+    const title = document.createElement("input");
+    title.id = "new-title";
+    title.className = "course course-title";
+    title.type = "text";
+    title.placeholder = "Title"
+    
+    const description = document.createElement("textarea");
+    description.id = "new-description";
+    description.className = "course course-description";
+    description.type = "text";
+    description.placeholder = "Description"
+    
+    const hours = document.createElement("input");
+    hours.id = "new-hours";
+    hours.className = "course course-hours";
+    hours.type = "text";
+    hours.placeholder = "Hours"
+    
+    const button = document.createElement("button");
+    button.className = "course course-button";
+    button.innerHTML = "Adicionar";
+    button.onclick = addCourse;
+            
+    const line = document.createElement("p");
+    line.innerHTML = "<hr>";
+
+    div.appendChild(title)
+    div.appendChild(description);
+    div.appendChild(hours);
+    div.appendChild(button);
+    courseList.appendChild(line);
+    courseList.appendChild(div);
 }
 
 async function addCourse() {
