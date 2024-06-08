@@ -42,7 +42,7 @@ async function initialize() {
 
         const bdelete = document.createElement("button");
         bdelete.className = "course course-delete";
-        bdelete.innerHTML = "Delete";
+        bdelete.innerHTML = "Deletar";
         bdelete.onclick = deleteCourse.bind(bdelete, course.id);
                 
         const line = document.createElement("p");
@@ -74,11 +74,22 @@ async function addCourse() {
             hours: document.getElementById("new-hours").value
         })
     });
-    initialize();
+    if (response.ok) {        
+        initialize();
+    }
+    else if (response.status === 400) {
+        alert("Favor preencha todos os campos");
+    }
+    else {
+        alert("Erro ao adicionar curso");
+    }
 }
 
 async function fetchList() {
     const response = await fetch(backendUrl + "courses");
+    if (!response.ok) {
+        alert("Erro ao buscar cursos. Backend desabilitado?");
+    }
     return await response.json();
 }
 
@@ -95,17 +106,34 @@ async function updateCourse(course) {
             hours: document.getElementById(course.id + "-hours").value
         })
     });
-    initialize();
+    if (response.ok) {
+        initialize();
+    } else if (response.status === 404) {
+        alert("Curso não encontrado");
+    } else if (response.status === 400) {
+        alert("Favor preencha todos os campos");
+    } else {
+        alert("Erro ao atualizar curso");
+    }
 }
 
 async function deleteCourse(id) {
-    const response = await fetch(backendUrl + "courses/" + id, {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
+    if (confirm("Deseja realmente deletar o curso?")) {
+        const response = await fetch(backendUrl + "courses/" + id, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        });
+        if (response.ok) {
+            initialize();
+        } else if (response.status === 404) {
+            alert("Curso não encontrado");
+        }        
+        else {
+            alert("Erro ao deletar curso");
         }
-    });
-    initialize();
+    }
 }
 
 

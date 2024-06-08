@@ -13,7 +13,7 @@ namespace aspnetcoreapp.Controllers
         [HttpPost()]
         public ActionResult<Course> InsertCourse([FromBody] Course course)
         {
-            if (course.Title == null || course.Description == null || course.Hours == 0)
+            if (course == null || course.Title == null || course.Description == null || course.Hours == 0)
             {
                 return BadRequest("Please fill all the necessary fields");
             }
@@ -63,6 +63,10 @@ namespace aspnetcoreapp.Controllers
         [HttpPut]
         public ActionResult<Course> UpdateCourse([FromBody] Course course)
         {
+            if (course == null) {
+                return BadRequest("Please fill all the necessary fields");
+            }
+
             var toUpdate =_provider.Get(course.Id);
 
             if (toUpdate == null) {
